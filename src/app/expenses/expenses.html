@@ -1,0 +1,8 @@
+<form style="display: flex; gap: 2rem; margin: 2rem 0;">
+    <label for="expenses">Expenses: </label>
+    <input type="number" name="expenses" id="expenses" [value]="expenses || ''" (input)="handleInput($event)">
+
+    Value: {{expenses}}
+
+    <button type="submit">Add</button>
+</form>
