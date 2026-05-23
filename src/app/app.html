@@ -1,5 +1,5 @@
 <h1>Financial Report</h1>
 
-<app-income></app-income>
-<app-expenses></app-expenses>
-<app-summary></app-summary>
+<app-income (incomeEmitter)="handleIncomeChange($event)"></app-income>
+<app-expenses (expensesEmitter)="handleExpensesChange($event)"></app-expenses>
+<app-summary [income]="income" [expenses]="expenses"></app-summary>

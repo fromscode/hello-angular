@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-income',
@@ -8,9 +8,19 @@ import { FormsModule, NgModel } from '@angular/forms';
   styleUrl: './income.css',
 })
 export class Income {
-  income = 0;
+  value = 0;
   
   handleInput(e: Event) {
-    this.income = +(e.target as HTMLInputElement).value
+    this.value = +(e.target as HTMLInputElement).value
   }
+
+  @Output()
+  incomeEmitter = new EventEmitter<number>();
+
+  handleAdd(e: Event) {
+    e.preventDefault()
+    this.value > 0 && this.incomeEmitter.emit(this.value);
+    this.value = 0;
+  }
+
 }

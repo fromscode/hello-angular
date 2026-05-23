@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-summary',
@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './summary.css',
 })
 export class Summary {
-  income = 100;
-  expenses = 50;
+  @Input()
+  income = 10;
+
+  @Input()
+  expenses= 5;
 }
