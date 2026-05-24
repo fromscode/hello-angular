@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
 
 
 @Component({
@@ -8,10 +8,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './income.css',
 })
 export class Income {
-  value = 0;
+  value = signal(0);
   
   handleInput(e: Event) {
-    this.value = +(e.target as HTMLInputElement).value
+    this.value.set(+(e.target as HTMLInputElement).value)
   }
 
   @Output()
@@ -19,8 +19,8 @@ export class Income {
 
   handleAdd(e: Event) {
     e.preventDefault()
-    this.value > 0 && this.incomeEmitter.emit(this.value);
-    this.value = 0;
+    this.value() >0 && this.incomeEmitter.emit(this.value());
+    this.value.set(0)
   }
 
 }

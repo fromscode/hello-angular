@@ -1,8 +1,8 @@
 <form style="display: flex; gap: 2rem; margin: 2rem 0;">
     <label for="income">Income: </label>
-    <input type="number" name="income" id="income" [value]="value" (input)="handleInput($event)" min="1">
+    <input type="number" name="income" id="income" [value]="value()" (input)="handleInput($event)" min="1">
 
-    Value: {{value}}
+    Value: {{value()}}
 
     <button type="submit" (click)="handleAdd($event)">Add</button>
 </form>

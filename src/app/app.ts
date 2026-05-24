@@ -10,14 +10,14 @@ import { Summary } from './summary/summary';
   styleUrl: './app.css'
 })
 export class App {
-  income = 0;
-  expenses = 0;
+  income = signal(0);
+  expenses = signal(0);
 
   handleIncomeChange(val: number){
-    this.income += val;
+    this.income.update(prev => prev + val);
   }
 
   handleExpensesChange(val: number){
-    this.expenses += val;
+    this.expenses.update(prev => prev + val);
   }
 } 

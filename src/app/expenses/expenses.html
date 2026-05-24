@@ -1,9 +1,9 @@
 <form style="display: flex; gap: 2rem; margin: 2rem 0;"
 >
     <label for="expenses">Expenses: </label>
-    <input type="number" name="expenses" id="expenses" [value]="value" (input)="handleInput($event)">
+    <input type="number" name="expenses" id="expenses" [value]="value()" (input)="handleInput($event)">
 
-    Value: {{value}}
+    Value: {{value()}}
 
     <button type="submit" (click)="handleAdd($event)">Add</button>
 </form>

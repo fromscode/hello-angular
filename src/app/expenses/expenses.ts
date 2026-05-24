@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
 
 @Component({
   selector: 'app-expenses',
@@ -7,18 +7,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './expenses.css',
 })
 export class Expenses {
-  value = 0;
+  value = signal(0);
 
   @Output()
   expensesEmitter = new EventEmitter<number>();
 
   handleInput(e: Event) {
-    this.value = +(e.target as HTMLInputElement).value
+    this.value.set(+(e.target as HTMLInputElement).value)
   }
 
   handleAdd(e: Event) {
     e.preventDefault();
-    this.value >0 && this.expensesEmitter.emit(this.value);
-    this.value = 0;
+    this.value() >0 && this.expensesEmitter.emit(this.value());
+    this.value.set(0)
   }
 }
